@@ -1,8 +1,13 @@
 package com.revature.tay;
 import java.util.ArrayList;
+//import java.sql.SQLException;
+
+//import java.util.HashSet;
 import java.util.Scanner;
+//import java.util.Set;
 
 import com.revature.menu.Account;
+//import com.revature.services.CustomerServices;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,26 +19,51 @@ public class Customer implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-private static  String username;
-private static String firstname;
-private static String lastname;
-private static String pin;
-private static String password;
-
-
-private static  ArrayList<Customer> customerList;
+private static String username;
+private  static String firstname;
+private  static String lastname;
+private  static String pin;
+private  static String password;
+private static int customerid;
+static ArrayList <Customer> customerList12 = new ArrayList<Customer>();
 
 public Customer getCustomerList;
 
 
 
-public Customer(String username, String firstname, String lastname, String password){
+public static int getCustomerid() {
+	return customerid;
+}
+
+
+public static void setCustomerid(int customerid) {
+	Customer.customerid = customerid;
+}
+
+
+public Customer() {
 	
 }
 
 
+public Customer(String firstname, String lastname, String pin, String password, Customer getCustomerList, int customerid) {
+	super();
+	Customer.customerid = customerid;
+	Customer.firstname = firstname;
+	Customer.lastname = lastname;
+	Customer.pin = pin;
+	Customer.password = password;
+	this.getCustomerList = getCustomerList;
+}
+public void username(String username) {
+	Customer.username = username;
+}
+
 public String getUsername() {
 	return username;
+}
+public void setPin(String pin) {
+	Customer.pin = pin;
 }
 public void setUsername(String username) {
 	Customer.username = username;
@@ -62,43 +92,26 @@ public String getPassword() {
 public void setPassword(String password) {
 	Customer.password = password;
 }
-public Customer(String username, String firstname, String lastname, String pin, String password ) {
 
-	username = "Tybian";
-	firstname = "Tay";
-	lastname = "YUu";
-	pin = "3333";
-	password = "hfrjfe";
 	
-}
-public Customer() {
-	// TODO Auto-generated constructor stub
-}
-public Customer(String username2, String firstname2, String lastname2, String password2, String accountid2,
-		ArrayList<Customer> customerList2) {
-	// TODO Auto-generated constructor stub
-}
-public ArrayList<Customer> getCustomerList() {
-	return customerList;
-}
 
+
+
+
+		public static void createAccount1() throws Exception {
+			
 		
 
-public void setCustomerList(ArrayList<Customer> customerList) {
-	Customer.customerList = customerList;
-}
-
-
-
-
-		public static void createAccount() {
-			 
+			
+			
 			Scanner scan = new Scanner(System.in);
+			Customer c = new Customer();
 			
 			System.out.println("Please your User Name: ");
+		      String username;
 			
-			username= scan.nextLine();
-			
+		      username= scan.nextLine();
+		      c.setUsername(username);
 			 while(username.length() == 0)
 			{
 				System.out.println("Please your User Name: ");
@@ -106,7 +119,10 @@ public void setCustomerList(ArrayList<Customer> customerList) {
 			}
 			
 			System.out.println("Please Enter Password: ");
+			String password;
+			
 			password = scan.nextLine();
+			c.setPassword(password); 
 			while(password.length() == 0)
 			{
 				System.out.println("Please your User Name: ");
@@ -114,7 +130,10 @@ public void setCustomerList(ArrayList<Customer> customerList) {
 			}
 			
 			System.out.println("Please Enter your First Name: ");
+			String firstname;
+			
 			firstname = scan.nextLine();
+			c.setFirstname(firstname);
 			while(firstname.length() == 0)
 			{
 				System.out.println("Please your User Name: ");
@@ -122,36 +141,35 @@ public void setCustomerList(ArrayList<Customer> customerList) {
 			}
 			
 			System.out.println("Please Enter your Last Name: ");
+			String lastname;
+			
 			lastname = scan.nextLine();
-			while(password.length() == 0)
+			c.setLastname(lastname); 
+			while(lastname.length() == 0)
 			{
 				System.out.println("Please your User Name: ");
 				lastname = scan.nextLine();
 			}
 			
 			System.out.println("Please Enter your email ");
+			String pin;
+			
 			pin = scan.nextLine();
+			c.setPin(pin);
 			while(pin.length() == 0)
 			{
 				System.out.println("Please your User Name: ");
 				pin = scan.nextLine();
 			}
+		
+			customerList12.add(c);
+			Customer.setCustomerid(23434);
 			
-			Customer c = new Customer(username, firstname, lastname, password, pin);
-			customerList = new ArrayList<Customer>();
-
+			System.out.println("You have successfully signed up, your User_Id is  "  + Customer.getCustomerid());
+    		
 			
 		
-			
-			        if(customerList != null) {
-				
-				    customerList.add(c);
-			        }
-			        else
-			        customerList.add(c);
-		
-			
-			System.out.println(customerList);
+      
 			
 		   
 			Account a = new Account();
@@ -161,17 +179,17 @@ public void setCustomerList(ArrayList<Customer> customerList) {
 			     // Check if the specified file
 			     // Exists or not
 			     if (f.exists())
-			         System.out.println("Exists");
+			         System.out.println();
 			     else
-			         System.out.println("Does not Exists");
+			         System.out.println();
 				 
 				 try {
 			         FileOutputStream fileOut = new FileOutputStream("employee.txt");
 			         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			         out.writeObject(customerList);
+			         out.writeObject(customerList12);
 			         out.close();
 			         fileOut.close();
-			         System.out.println("Serialized data is saved in \"employee.txt\"");
+			      //   System.out.println("Serialized data is saved in \"employee.txt\"");
 			      } catch (IOException i) {
 			         i.printStackTrace();
 			     
@@ -179,7 +197,7 @@ public void setCustomerList(ArrayList<Customer> customerList) {
 			
 			
 			      }finally {
-			    	
+			    		
 			    	  a.createAccount();
 						scan.close();
 			      }
@@ -187,14 +205,49 @@ public void setCustomerList(ArrayList<Customer> customerList) {
 			 }
 			
 		
-			
-			
 			}
 		
-		@Override
+		public ArrayList<Customer> getCustomerList12() {
+			return customerList12;
+		}
+		public void setCustomerList12(ArrayList<Customer> customerList12) {
+			Customer.customerList12 = customerList12;
+		}
+		//@Override
+		//public String toString() {
+			//return "Customer:" + "\r\n" +"Firstname:  " + getFirstname() + "\r\n" + "Lastname:  " + getLastname() + "\r\n" + "Username:   " + getUsername() + "\r\n" + "Password:   " + getPassword();
+					//}
+		
 		public String toString() {
-			return "Customer:" + "\r\n" +"Firstname:  " + getFirstname() + "\r\n" + "Lastname:  " + getLastname() + "\r\n" + "Username:   " + getUsername() + "\r\n" + "Password:   " + getPassword();
-					
+			return "Customer [username=" + username + ", firstname=" + firstname + ", lastname=" + lastname + ", email="
+					+ pin + ", password=" + password + "]";
 		}
 		
+		 public static void Accountlogin() {
+		 
+			 //ArrayList< Customer> customerList1 = new ArrayList <Customer>();
+			   
+			   Scanner scan = new Scanner(System.in);
+			 Customer c = new Customer();
+			   
+			  System.out.println("Please enter your username: ");
+			   String input = scan.next();
+			   if (c.getUsername().equals(input)) {
+				   System.out.println("Please enter Password");
+			   
+			   }else {
+				   System.out.println("Invaild Username");
+				   Accountlogin();
+			   }
+			  
+			   String input2 = scan.next();
+			   if(c.getPassword().equals(input2)) {
+				   Account.Accountstatus();
+			   }else {
+				   System.out.println("Invaild password please try again");
+				   Accountlogin();
+			   }
+		scan.close();	   
+}
+		 
 }

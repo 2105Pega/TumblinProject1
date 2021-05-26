@@ -1,8 +1,9 @@
 package com.revature.driver;
 import java.util.Scanner;
 
-import com.revature.menu.Account;
+//import com.revature.menu.Account;
 import com.revature.tay.Customer;
+
 import com.revature.tay.Employee;
 
 
@@ -12,7 +13,7 @@ public class MainMenu {
 	
 	
 	public static void mainMenu() {
-		 System.out.println(" Welcome to the Bank. ");
+		// System.out.println(" Welcome to the Bank. ");
         Scanner scan = new Scanner(System.in);
         //System.out.println("Please press 1 continue");
 		Employee admin = new Employee();
@@ -36,6 +37,8 @@ public class MainMenu {
 	      switch(menuSelection) {
 	      case 1:
 	    	 System.out.println("                             Login menu");
+	    	 System.out.println("Admin username:   Tay");
+	    	 System.out.println("Admin passsword   Taybian1");
 	    	 System.out.println("Please enter your username;");
 	    	 
 	    	 
@@ -68,12 +71,17 @@ public class MainMenu {
 	  	break;
 	  		
          case 2:
-       	  Account ac = new Account();
-       	  ac.Accountlogin();
+       	 //  Customer ac = new Customer();
+       	  Customer.Accountlogin();
        	 
              break;
          case 3:
-       	  Customer.createAccount();
+			try {
+				Customer.createAccount1();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             
              break;
          case 4:

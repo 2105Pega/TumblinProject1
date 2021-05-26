@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.revature.tay.Customer;
@@ -42,7 +44,7 @@ public class TestMethodsHere {
 			   scan.close();
 		   
 	    }*/ 
-		@Test   
+	/*	@Test   
 	  public void Accountwithdraw() {
 				//Account ac = new Account();
 				double ammount;
@@ -70,11 +72,10 @@ public class TestMethodsHere {
 					   accountbalance = accountbalance - ammount;
 				   }
 				   scan.close();
-		   }
-
+		   }*/
     
        @Test
-		public void transfer() {
+		/*public void transfer() {
 Scanner scan = new Scanner(System.in);
 	int jointaccountid = 66757;
 	double ammount = 500;
@@ -120,5 +121,84 @@ Scanner scan = new Scanner(System.in);
 			System.out.println("You don't have any other accounts at this time, please apply for Joint if you want to use the transfer feature;");
 			//Status2();
 		}scan.close();
-		}
+		}*/
+      @BeforeAll
+       public static void createCustomer() {
+    	 // private static final long serialVersionUID = 1L;
+    	    String username;
+    	    String firstname;
+    	    @SuppressWarnings("unused")
+			String lastname;
+    	    String pin;
+    	    String password;
+    	   @SuppressWarnings("unused")
+		ArrayList<Customer> customerList;
+
+    	//  private static  ArrayList<Customer> customerList;
+    	
+ 			 
+  			Scanner scan = new Scanner(System.in);
+  			
+  			System.out.println("Please your User Name: ");
+  			
+  			username= scan.nextLine();
+  			
+  			 while(username.length() == 0)
+  			{
+  				System.out.println("Please your User Name: ");
+  				username = scan.nextLine();
+  			}
+  			
+  			System.out.println("Please Enter Password: ");
+  			password = scan.nextLine();
+  			while(password.length() == 0)
+  			{
+  				System.out.println("Please your Password: ");
+  				password = scan.nextLine();
+  			}
+  			
+  			System.out.println("Please Enter your First Name: ");
+  			firstname = scan.nextLine();
+  			while(firstname.length() == 0)
+  			{
+  				System.out.println("Please your First Name: ");
+  				firstname = scan.nextLine();
+  			}
+  			
+  			System.out.println("Please Enter your Last Name: ");
+  			lastname = scan.nextLine();
+  			while(password.length() == 0)
+  			{
+  				System.out.println("Please your Last Name: ");
+  				lastname = scan.nextLine();
+  			}
+  			
+  			System.out.println("Please Enter your Email ");
+  			pin = scan.nextLine();
+  			while(pin.length() == 0)
+  			{
+  				System.out.println("Please your Email: ");
+  				pin = scan.nextLine();
+  			}
+  			//Customer c = new Customer(username, firstname, lastname, password, pin);
+  		//	System.out.println(c);
+  			
+  			//customerList = new ArrayList<Customer>();
+
+  			
+  		
+  			
+  			   //     if(customerList != null) {
+  				
+  				//    customerList.add(c);
+  			      //  }
+  			        //else
+  			        //customerList.add(c);
+  		
+  			
+  			//System.out.println(c);
+  			
+    	  
+ scan.close();      }
 }
+

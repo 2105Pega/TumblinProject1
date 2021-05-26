@@ -94,14 +94,14 @@ public static void viewAccounts(){
 }
 
 public static void editAccounts() {
-	
-	Customer c = new Customer();
+	Account a = new Account();
+ Customer c = new Customer();
 	Scanner scan = new Scanner(System.in);
 	System.out.println("Edit Account");
 	int empMenu =0;
 System.out.println("Welcome " + Employee.getUsername()+  " please select an option to edit account");
 if(c.getCustomerList == null)
-{System.out.println("1.   " + c.getUsername() );
+{System.out.println("1.   " + c.getUsername() + "   Accountid " +  a.getAccountid());
 System.out.println("2." +" Back to Admin Menu");}
 else{System.out.println("1.   " +  c.getUsername()  );
 
@@ -122,14 +122,15 @@ case 2:Employee.login();
 scan.close();
 }
 public static void PendingAccounts() {
-	
-	
+	Customer c = new Customer();
+	Scanner scan = new Scanner(System.in);
+	int empMenu = 0;
 	if(AccountUsage.pending == "pending") {
-		System.out.println("This is working mate");
-		Scanner scan = new Scanner(System.in);
-		int empMenu = 0;
-		System.out.println("Do you want to Approve this account?");
-	System.out.println("1.    Yes"  );
+	//	System.out.println("This is working mate");
+		
+	System.out.println("You have an Application from  " +  c.getUsername() + " Id: " + Customer.getCustomerid() +" for a Savings Account" );	
+	System.out.println("Do you want to Approve this account?");
+	System.out.println("1.    Yes");
 	System.out.println("2.    No");
 	while (!scan.hasNextInt()) {
 	      System.out.println("Input is not a valid number.");
@@ -138,22 +139,24 @@ public static void PendingAccounts() {
 	empMenu = scan.nextInt();
 	switch(empMenu) {
 	case 1:
-		Account.JointAccountCreated();
+		
 		System.out.println("You have Approve this account");
 		AccountUsage.pending = null;
+		Account.JointAccountCreated();
 		break;
 	case 2:System.out.println("You have declined this account");
          AccountUsage.pending = null;	
-		break;
-	}
-	scan.close();
+         Employee.login();
+         break;
 	}
 	
-        else{
+	
+	    }else{
 		System.out.println("There is no Applications at this time");
-		
 		Employee.login();
-	}
+		}
+	scan.close();
 	
 }
+
 }
