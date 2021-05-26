@@ -88,7 +88,8 @@ public class MainMenu {
              
              break;
          default:
-             System.out.println("Invalid choice");
+             System.out.println("You have exited the program");
+             
          }
          System.out.println();
 	           scan.close();}
