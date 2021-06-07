@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;margin:0px auto;}
+        .tg td{background-color:#070707;border-color:#93a1a1;border-style:solid;border-width:1px;color:#cdd5f8;
+          font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg th{background-color:#828688;border-color:#c0ebeb;border-style:solid;border-width:1px;color:#ffffff;
+          font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+        @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
+    <style>
+
+        body {
+            background-image: linear-gradient(-225deg, #a1a3f1 0%, #666566 100%);
+background-image: linear-gradient(to top, #322efa 0%, #bbb8b9 100%);
+background-attachment: fixed;
+  background-repeat: no-repeat;
+
+    font-family: 'Vibur', cursive;
+/*   the main font */
+    font-family: 'Abel', sans-serif;
+opacity: .95;
+/* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+        }
+        .btnnnn{
+            background-color: rgb(84, 54, 253);
+          color: rgb(253, 253, 253);
+          padding: 16px 20px;
+          border: none;
+          cursor: pointer;
+          opacity: 0.8;
+          /* position: fixed; */
+          bottom: 23px;
+          right: 28px;
+          width: 280px;
+        }
+        .btnnnnn{
+            background-color: rgb(250, 253, 54);
+          color: rgb(0, 0, 0);
+          padding: 16px 20px;
+          border: none;
+          cursor: pointer;
+          opacity: 0.8;
+          /* position: fixed; */
+          bottom: 23px;
+          right: 28px;
+          width: 280px;
+        }
+        .btnn{
+        
+          background-color: rgb(124, 236, 193);
+          color: rgb(0, 0, 0);
+          padding: 16px 20px;
+          border: none;
+          cursor: pointer;
+          opacity: 0.8;
+          /* position: fixed; */
+          bottom: 23px;
+          right: 28px;
+          width: 280px;
+        }
+        .btnnn{
+        
+        background-color: rgb(250, 121, 121);
+        color: rgb(0, 0, 0);
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        /* position: fixed; */
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+        }
+        /* Button used to open the contact form - fixed at the bottom of the page */
+        .open-button {
+          background-color: #555;
+          color: white;
+          padding: 16px 20px;
+          border: none;
+          cursor: pointer;
+          opacity: 0.8;
+          /* position: fixed; */
+          bottom: 23px;
+          right: 28px;
+          width: 280px;
+        }
+        
+        /* The popup form - hidden by default */
+        .form-popup {
+          display: none;
+          position: fixed;
+          bottom: 0;
+          right: 15px;
+          border: 3px solid #f1f1f1;
+          z-index: 9;
+        }
+        
+        /* Add styles to the form container */
+        .form-container {
+          max-width: 300px;
+          padding: 10px;
+          /* background-color: white; */
+          background-image: linear-gradient(-225deg, #a1f1ac 0%, #666566 100%);
+          background-image: linear-gradient(to top, #7c7777 0%, #bbb8b9 100%);
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+        }
+        
+        /* Full-width input fields */
+        .form-container input[type=text], .form-container input[type=password] {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          border: none;
+          background: #f1f1f1;
+        }
+        
+        /* When the inputs get focus, do something */
+        .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+          background-color: #ddd;
+          outline: none;
+        }
+        
+        /* Set a style for the submit/login button */
+        .form-container .btn {
+          background-color: #04AA6D;
+          color: white;
+          padding: 16px 20px;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          margin-bottom:10px;
+          opacity: 0.8;
+        }
+        
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+          background-color: red;
+        }
+        
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover, .open-button:hover {
+          opacity: 1;
+        }
+        </style>
+</head>
+<script>
+function updateAccount() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("cb").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("POST", "http://localhost:8080/Project1/api/c/d", true);
+          xhttp.send();
+        }
+</script>
+<body>
+    <div style="text-align: center;"><h3>Account View</h3></div>
+    <form><button class="btnn" type="button" onclick="updateAccount()">Update Account</button>
+        <button formaction="http://localhost:8080/Project1\HTML\AdminPage.html" style="float: right;" class="btnnnnn" type="submit">
+            Admin
+        </button>
+    
+    
+    
+    </form>
+
+    
+        <div class="tg-wrap">
+            <table style = "width: 1000px;" class="tg" id="table">
+        <thead>
+          <tr>
+            <th class="tg-c3ow">UserName</th>
+            <th class="tg-c3ow">AccountID(#)</th>
+            <th class="tg-c3ow">Checkings Balance($)</th>
+            <th class="tg-c3ow">Savings ID(#)</th>
+            <th class="tg-c3ow">Savings Balance($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tg-c3ow">Bob121</td>
+            <td class="tg-c3ow">23412</td>
+            <td class="tg-c3ow" id="cb">0</td>
+            <td class="tg-c3ow">0</td>
+            <td class="tg-c3ow">0</td>
+          </tr>
+        </tbody>
+        </table></div>
+        <!-- <button style="" ,type="button" onclick="run()">Change Content</button> -->
+        <div class="btn-group" style="text-align: center;">
+            <button class="open-button" onclick="openForm()">Deposit</button>
+            <button class="open-button" onclick="openForm1()">Withdraw</button>
+            <button class="open-button">Transfer</button>
+          </div>
+          <div class="form-popup" id="myForm" class="form-container">
+            <form action="http://localhost:8080/Project1/api/c/deposit" class="form-container" method="POST">
+              <h1>Deposit Form</h1>
+          
+              <label for="email"><b>How much would you like to Deposit($)</b></label>
+              <input type="number" placeholder="Amount" name="Amount" required>
+          
+              <button type="submit" class="btn">Deposit!</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+          <div class="form-popup" id="myForm1" class="form-container">
+            <form action="http://localhost:8080/Project1/api/c/withdraw" class="form-container" method="POST">
+              <h1>Withdraw Form</h1>
+          
+              <label for="email"><b>How much would you like to Withdraw($)</b></label>
+              <input type="number" placeholder="Amount" name="Amount" required>
+          
+              <button type="submit" class="btn">Withdraw!</button>
+              <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
+            </form>
+          </div>
+          <script>
+          function openForm() {
+            document.getElementById("myForm").style.display = "block";
+          }
+          
+          function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+          }
+          </script>
+            <script>
+                function openForm1() {
+            document.getElementById("myForm1").style.display = "block";
+            }
+            
+            function closeForm1() {
+            document.getElementById("myForm1").style.display = "none";
+            }
+            </script>
+        <form>
+          <button formaction="http://localhost:8080/Project1/HTML/Menu.html" class="btnnn" type="submit">Logout</button>
+        </form>
+        <div style="float: right;">
+        <button class="btnnnn" type="button">Appications</button>
+        </div>
+        </body>
+
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(223, 223, 223);
+  font-family: 'Open Sans', sans-serif;
+}
+table {
+  background: #000000;
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  margin: 1em;
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: #4542e2;
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+td {
+  color: #fff;
+  font-weight: 400;
+  padding: 0.65em 1em;
+}
+.disabled td {
+  color: #4F5F64;
+}
+tbody tr {
+  transition: background 0.25s ease;
+}
+tbody tr:hover {
+  background: #014055;
+
+}
+.center{
+margin-left: auto;
+margin-right: auto;
+}
+
+    </style>
+    <style>
+        :root {
+  --primColor: #dcdcdc;
+  --secoColor: #555555;
+  --cornerRad: 4px;
+}
+body {
+    background-image: linear-gradient(-225deg, #a1a3f1 0%, #666566 100%);
+background-image: linear-gradient(to top, #322efa 0%, #bbb8b9 100%);
+background-attachment: fixed;
+  background-repeat: no-repeat;
+
+    font-family: 'Vibur', cursive;
+/*   the main font */
+    font-family: 'Abel', sans-serif;
+opacity: .95;
+/* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+}
+details {
+  margin: 40px;
+}
+summary {
+  writing-mode: vertical-lr;
+  text-align: center;
+  padding: 12px 10px;
+  width: 23px;
+  height: 17px;
+  background-color: var(--primColor);
+  border: 2px solid var(--secoColor);
+  border-radius: var(--cornerRad);
+  color: var(--secoColor);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: transform 200ms ease-in-out 0s;
+}
+summary::before,
+summary::after {
+  position: static;
+  top: 0;
+  left: 0;
+}
+summary::before {
+  content: "";
+}
+summary::after {
+  content: "III";
+  letter-spacing: -1px;
+}
+summary:hover {
+  transform: scale(1.1);
+}
+summary::marker {
+  font-size: 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .menu {
+  animation-name: menuAnim;
+}
+details[open] summary::before {
+  content: "X";
+}
+details[open] summary::after {
+  content: "";
+}
+.menu {
+  height: 0;
+  width: fit-content;
+  border-radius: var(--cornerRad);
+  background-color: var(--primColor);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0);
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  animation: closeMenu 300ms ease-in-out forwards;
+}
+.menu a {
+  padding: 12px 24px;
+  margin: 0 16px;
+  color: var(--secoColor);
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  text-decoration: none;
+  text-align: center;
+  transition: filter 200ms linear 0s;
+}
+.menu a:nth-of-type(1) {
+  padding-top: 24px;
+}
+.menu a:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.menu a:hover {
+  filter: brightness(200%);
+}
+details::before {
+  content: "← Menu";
+  color: var(--secoColor);
+  position: absolute;
+  margin-left: 80px;
+  padding: 10px 10px;
+  opacity: 0.4;
+}
+details[open]::before {
+  animation: fadeMe 300ms linear forwards;
+}
+@keyframes menuAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 312px;
+  }
+}
+@keyframes fadeMe {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.h2{
+    font-weight: var(--primColor);
+    font-family: sans-serif;
+    text-decoration: #364043;
+    font-style: italic;
+}
+.btn{
+    background-color: rgb(0, 0, 0);
+          /* text-size: 50px; */
+          color: rgb(255, 255, 255);
+          padding: 16px 20px;
+          border: none;
+          cursor: pointer;
+          /* opacity: 0.8; */
+          /* position: fixed; */
+          bottom: 23px;
+          right: 28px;
+          width: 280px;
+}
+.form-popup {
+          display: none;
+          position: fixed;
+          bottom: 0;
+          right: 15px;
+          border: 30px solid #f1f1f1;
+          z-index: 9;
+          background-color: rgb(255, 255, 255)
+        }
+        .open-button {
+          background-color: #555;
+          color: white;
+          padding: 16px 20px;
+          border: none;
+          cursor: pointer;
+          /* opacity: 0.8; */
+          position: fixed;
+          bottom: 23px;
+          right: 28px;
+          width: 280px;
+        }
+        .form-container {
+          max-width: 3px;
+          padding: 10px;
+          background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <script>
+           function info() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("info").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("POST", "http://localhost:8080/Project1/api/c/info", true);
+          xhttp.send();
+        }
+    </script>
+
+    <div>
+        <details>
+            <summary></summary>
+            <nav class="menu">
+              <a href="http://localhost:8080/Project1/HTML/Menu.html">Save and Logout</a>
+              <a href="#link">Appications</a>
+              <a href="#link">Freeze or Delete Accounts</a>
+              <a href="#link">Contacts</a>
+              <a href="#link">About</a>
+            </nav>
+          </details>
+    </div>
+    <!-- <div>
+        <button style="float: right;" class="btnnn" type="button"><a href ="http://localhost:8080/Project1/HTML/Menu.html">Logout</a></button>
+      </div> -->
+    <div style="text-align: center;">
+        <h2 class="h2">List of Active and Locked Accounts</h2>
+    </div>
+   <div style="text-align: center;">
+    <table class= "center">
+        <thead>
+          <tr>
+            <th>Account ID
+            <th>Firstname
+            <th>Lastname
+            <th>Username
+            <th>Status
+            
+        </thead>
+        <tbody>
+          <tr>
+            <td><button type="submit" class="btn"><h1>145323</h1></button>
+            <td>Mac
+            <td>Ryan
+            <td>Mars1232
+            <td style="color: greenyellow;">Active
+           
+          <tr>
+            <td><button type="submit" class="btn"><h1>937692</h1></button>
+            <td>Joe
+            <td>Zo
+            <td>Zoe2344
+            <td style="color: greenyellow;">Active
+            
+          <tr class="disabled">
+            <td><button type="submit" class="btn"><h1>693012</h1></button>
+            <td>Hoban
+            <td>Washburn
+            <td>Wash565
+            <td style="color: red;">Frozen
+            
+          <tr>
+            <td><button type="submit" class="btn"><h1>404232</h1></button>
+            <td>Kaylee
+            <td>Frye
+            <td>Kaylee9009
+            <td style="color: greenyellow;">Active
+            
+          <tr>
+            <td><button type="submit" class="btn"><h1>234898</h1></button>
+            <td>Jayne
+            <td>Cobb
+            <td>Jay432
+            <td style="color: greenyellow;">Active
+            
+          <tr class="disabled">
+            <td><button type="submit" class="btn"><h1>320392</h1></button>
+            <td>Miles
+            <td>Book
+            <td>Mdogg67
+            <td style="color: red;">Frozen
+            
+          <tr>
+            <td><button type="submit" class="btn"><h1>382382</h1></button>
+            <td>Simon
+            <td>Tam
+            <td>Simon3000
+            <td style="color: greenyellow;">Active
+            
+          <tr>
+            <td><button type="submit" class="btn" ><h1>563829</h1></button>
+            <td>River
+            <td>Johnson
+            <td>Riv78
+            <td style="color: greenyellow;">Active
+            <tr>
+           
+            
+            <td><button type="submit" class="btn"onclick="openForm()"><h1>23412</h1></button>
+            <td>Bob
+            <td>Rondy
+            <td>Bob121
+            <td style="color: greenyellow;">Active
+        
+            </tbody>
+            
+      </table>
+
+      </div>
+      
+        <span class="form-popup" id="myForm" class="form-container">
+            <p style="text-align: center;">Customer Info</p>
+            <p  class="form-container">
+              <h5 id ="info"></h5>
+              <p><button type="button" class="btn cancel" onclick="closeForm()">Close</button></p>
+              <p><a href="http://localhost:8080/Project1/HTML/Accoun.html">Edit Account</a></p>
+            </p>
+            <script>
+                function openForm() {
+        document.getElementById("myForm").style.display = "block";
+        info();
+    }
+      
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+      }
+            </script>
+      </span>
+      
+</body>
+</html>
