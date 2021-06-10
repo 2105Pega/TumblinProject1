@@ -1,3 +1,6 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,8 +26,8 @@ public class TestMethodsHere {
 		   int accountid = random_int;
 		   System.out.println(accountid);
 	}
-	  //@Test	   
-	/*public void Accountlogin() {
+	  @Test	   
+	public void Accountlogin() {
 			   Scanner scan = new Scanner(System.in);
 			   Customer c = new Customer();
 			   System.out.println("Please enter your username:");
@@ -43,8 +46,8 @@ public class TestMethodsHere {
 			   }
 			   scan.close();
 		   
-	    }*/ 
-	/*	@Test   
+	    } 
+		@Test   
 	  public void Accountwithdraw() {
 				//Account ac = new Account();
 				double ammount;
@@ -72,10 +75,10 @@ public class TestMethodsHere {
 					   accountbalance = accountbalance - ammount;
 				   }
 				   scan.close();
-		   }*/
+		   }
     
        @Test
-		/*public void transfer() {
+		public void transfer() {
 Scanner scan = new Scanner(System.in);
 	int jointaccountid = 66757;
 	double ammount = 500;
@@ -121,7 +124,7 @@ Scanner scan = new Scanner(System.in);
 			System.out.println("You don't have any other accounts at this time, please apply for Joint if you want to use the transfer feature;");
 			//Status2();
 		}scan.close();
-		}*/
+		}
       @BeforeAll
        public static void createCustomer() {
     	 // private static final long serialVersionUID = 1L;
@@ -199,6 +202,44 @@ Scanner scan = new Scanner(System.in);
   			//System.out.println(c);
   			
     	  
- scan.close();      }
+ scan.close();      
+ }
+      
+//            @Test
+      public static class ConnectionUtils {
+    		public static Connection getConnection() throws SQLException
+    		{
+    			try {
+    				
+    				Class.forName("org.postgresql.Driver");
+    				
+    				
+    				
+    			} catch (ClassNotFoundException e) {
+    				// TODO: handle exception
+    				e.printStackTrace();
+    			}
+    			
+    			String url = System.getenv("URL");
+    			String username = System.getenv("DB_Username");
+    			String password = System.getenv("DB_password");
+    			
+    			
+    			
+    			return DriverManager.getConnection(url, username, password);
+    		}
+    		
+    		//	public static void main(String[] args) throws ClassNotFoundException
+    			//{
+    				//try (Connection conn = ConnectionUtils.getConnection()){
+    					
+    					//System.out.println("Connection Succcessful");
+    					
+    			//	} catch (Exception e) {
+    					// TODO: handle exception
+    				//}
+    			//}
+    		}
+
 }
 

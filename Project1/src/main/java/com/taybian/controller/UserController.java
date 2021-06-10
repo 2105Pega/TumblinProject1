@@ -15,6 +15,7 @@ import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import org.apache.logging.log4j.LogManager;
 
 import com.revature.tay.Customer;
 import com.revature.tay.Employee;
@@ -72,26 +73,32 @@ public Response Accountupdate(){
 @POST
 @Produces(MediaType.TEXT_PLAIN)
  public double  Deposit(@FormParam("Amount")double deposit) {
- 
+	org.apache.logging.log4j.Logger logger = LogManager.getLogger(Account.class);
 	Account a = new Account();
 	System.out.println(deposit);
 	a.setAccountbalance(a.getAccountbalance()+deposit);
 	System.out.println(a.getAccountbalance());
-	System.out.println("This works but gotta get back to main page");
+	System.out.println("Deposit Complete");
+	logger.info("Deposited " + deposit + " from " + "accountbalance, " + " accountbalance is now "
+			+ a.getAccountbalance());
 	return a.getAccountbalance();
+	
 	
 }
 @Path("/withdraw")
 @POST
 @Produces(MediaType.TEXT_PLAIN)
  public double  Withdraw(@FormParam("Amount")double withdraw) {
- 
+	org.apache.logging.log4j.Logger logger = LogManager.getLogger(Account.class);
 	Account a = new Account();
 	System.out.println(withdraw);
 	a.setAccountbalance(a.getAccountbalance()-withdraw);
 	System.out.println(a.getAccountbalance());
-	System.out.println("This works but gotta get back to main page");
+	System.out.println("Withdraw Complete");
+	logger.info("Withdrew " + withdraw + " from " + "accountbalance, " + " accountbalance is now "
+			+ a.getAccountbalance());
 	return a.getAccountbalance();
+	
 }
 @Path("/alogin")
 @POST
